@@ -123,5 +123,25 @@ $(function() {
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
+        var firstEntry;
+        beforeEach(function(done){
+         loadFeed(0,function(){
+
+            var feedTest = document.querySelector('.feed .entry');
+             firstEntry = feedTest.innerText;
+            done();
+            });
+            
+         });
+        it('when a new feed is loaded by the loadFeed function that the content actually changes' , function (done) {
+            // body...
+        loadFeed(1,function(){
+            debugger
+            var feedTest = document.querySelector('.feed .entry');
+            var secondEntry = feedTest.innerText;
+            expect(secondEntry).not.toEqual(firstEntry);
+            done();
+        }); 
+     });
      });
 }());
