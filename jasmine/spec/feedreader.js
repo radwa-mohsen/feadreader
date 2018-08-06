@@ -112,23 +112,25 @@ $(function() {
          * Remember, loadFeed() is asynchronous.
          */
     var firstEntry;
+    var secondEntry;
     beforeEach(function(done){
       loadFeed(0,function(){
 
         var feedTest = document.querySelector('.feed .entry');
         firstEntry = feedTest.innerText;
+        loadFeed(1,function(){
+
+        var feedTest = document.querySelector('.feed .entry');
+        secondEntry = feedTest.innerText;
         done();
+        }); 
       });
      });
 
      it('when a new feed is loaded by the loadFeed function that the content actually changes' , function (done) {
-      loadFeed(1,function(){
-
-        var feedTest = document.querySelector('.feed .entry');
-        var secondEntry = feedTest.innerText;
+      
         expect(secondEntry).not.toEqual(firstEntry);
-        done();
-      }); 
+      
     });
    });
 }());
