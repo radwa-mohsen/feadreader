@@ -100,7 +100,8 @@ $(function() {
    it('when the loadFeed function is called and completes its work' , function () {
       
       var feedTest = document.querySelector('.feed .entry');
-      expect(feedTest.innerText).not.toBeNull();
+      //expect(feedTest.innerText).not.toBeNull();
+      expect(feedTest.length).not.toBe(0);
       
     });
  });
